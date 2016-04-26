@@ -98,6 +98,7 @@ class ofOpenALSoundPlayer_TimelineAdditions : public ofBaseSoundPlayer, public o
 		bool isPaused() const;
 		float getDuration() const;
 		int getNumChannels() const;
+        int getSampleRate() const;
     
 		static void initialize();
 		static void close();
@@ -111,9 +112,14 @@ class ofOpenALSoundPlayer_TimelineAdditions : public ofBaseSoundPlayer, public o
         vector<short> & getBuffer();
         vector<float>& getCurrentBuffer(int _size);
         vector<float>& getBufferForFrame(int _frame, float _fps, int _size);
+        vector<float>& getCurrentBufferForChannel(int _size, int channel);
         vector<float> currentBuffer;
 
         float * getSystemSpectrum(int bands);
+    
+       
+    
+        //---
 
 		static ALCcontext * alContext;
 	protected:

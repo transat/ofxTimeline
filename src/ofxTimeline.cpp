@@ -1094,9 +1094,15 @@ void ofxTimeline::setBPM(float bpm) {
     ticker->setBPM(bpm);
 }
 
+void ofxTimeline::setNewBPM(float bpm){
+    ticker->setBPM(bpm);
+    ticker->updateBPMPoints();
+}
+
 float ofxTimeline::getBPM() {
 	return ticker->getBPM();
 }
+
 
 bool ofxTimeline::toggleSnapToBPM(){
 	snapToBPM = !snapToBPM;
@@ -2090,6 +2096,7 @@ ofxTLAudioTrack* ofxTimeline::addAudioTrack(string trackName, string audioPath){
 ofxTLAudioTrack* ofxTimeline::getAudioTrack(string audioTrackName){
     return (ofxTLAudioTrack*)getTrack(audioTrackName);
 }
+
 
 ofxTLTrackHeader* ofxTimeline::getTrackHeader(string trackName){
     return getTrackHeader(getTrack(name));

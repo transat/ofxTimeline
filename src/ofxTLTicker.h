@@ -66,10 +66,12 @@ class ofxTLTicker : public ofxTLTrack
 	virtual void setHoverTime(unsigned long long millis);
 
 	bool getIsScrubbing();
+    
+    void updateBPMPoints();
 	
   protected:
 	void updateTimelinePosition();
-	void updateBPMPoints();
+	
 
 	ofRectangle totalDrawRect;
 	vector<ofxTLBPMPoint> bpmScreenPoints;

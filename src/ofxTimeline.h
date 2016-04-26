@@ -280,6 +280,8 @@ class ofxTimeline : ofThread {
 	//this is useful for snapping to intervals
 	void setBPM(float bpm);
 	float getBPM();
+    
+    void setNewBPM(float bpm);
 	
     bool toggleSnapToBPM();
     void enableSnapToBPM(bool enableSnap);

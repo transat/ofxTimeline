@@ -278,7 +278,7 @@ bool ofOpenALSoundPlayer_TimelineAdditions::sfStream(string path,vector<short> &
 			fftAuxBuffer[i]=float(buffer[i])/32565.0f;
 		}
 	}
-
+    
 	return true;
 }
 
@@ -373,6 +373,8 @@ void ofOpenALSoundPlayer_TimelineAdditions::readFile(string fileName, vector<sho
 			fftBuffers[i][j] = fftAuxBuffer[j*channels+i];
 		}
 	}
+    
+    
 }
 
 //------------------------------------------------------------
@@ -636,6 +638,10 @@ float ofOpenALSoundPlayer_TimelineAdditions::getDuration() const{
 
 int ofOpenALSoundPlayer_TimelineAdditions::getNumChannels() const{
 	return channels;
+}
+
+int ofOpenALSoundPlayer_TimelineAdditions::getSampleRate() const{
+    return samplerate;
 }
 
 //------------------------------------------------------------
@@ -931,6 +937,44 @@ vector<float>& ofOpenALSoundPlayer_TimelineAdditions::getCurrentBuffer(int _size
     return currentBuffer;
 }
 
+//for AudioAnalyzerTrack
+vector<float>& ofOpenALSoundPlayer_TimelineAdditions::getCurrentBufferForChannel(int _size, int channel){
+    
+    if(int(currentBuffer.size()) != _size)
+    {
+        currentBuffer.resize(_size);
+    }
+   	currentBuffer.assign(currentBuffer.size(),0);
+    
+    int nCh = channel - 1; //channels number starting from 0
+    if (nCh >= channels){
+        nCh = channels - 1;//limit to file nChannels
+        ofLog(OF_LOG_WARNING,"ofOpenALSoundPlayer_TimelineAdditions: channel requested exceeds file channels");
+    }
+    
+    int pos;
+    for(int k = 0; k < int(sources.size())/channels; ++k)
+    {
+        alGetSourcei(sources[k*channels],AL_SAMPLE_OFFSET,&pos);
+        //for(int i = 0; i < channels; ++i) //avoid channels sumup
+        int i = nCh; //use only specified channel
+        {
+            for(int j = 0; j < _size; ++j)
+            {
+                if(pos+j<(int)buffer.size())
+                {
+                    currentBuffer[j] += float(buffer[(pos+j)*channels+i])/65534.0f;
+                }
+                else
+                {
+                    currentBuffer[j] = 0;
+                }
+            }
+        }
+    }
+    return currentBuffer;
+}
+
 vector<float>& ofOpenALSoundPlayer_TimelineAdditions::getBufferForFrame(int _frame, float _fps, int _size)
 {
 	if(int(currentBuffer.size()) != _size)
@@ -1095,3 +1139,5 @@ void ofOpenALSoundPlayer_TimelineAdditions::runWindow(vector<float> & signal){
 }
 
 //#endif
+
+// ----------------------------------------------------------------------------

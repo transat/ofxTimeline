@@ -149,6 +149,8 @@ void ofxTLAudioTrack::draw(){
     ofPopStyle();
 }
 
+
+
 float ofxTLAudioTrack::positionForSecond(float second){
 	if(isSoundLoaded()){
 		return ofMap(second, 0, player.getDuration(), 0, 1.0, true);
@@ -449,6 +451,13 @@ vector<float>& ofxTLAudioTrack::getCurrentBuffer(int _size)
     buffered = player.getCurrentBuffer(_size);
     return buffered;
 }
+
+//--------------------------------------
+vector<float>& ofxTLAudioTrack::getCurrentBufferForChannel(int _size, int channel){
+    buffered = player.getCurrentBufferForChannel(_size, channel);
+    return buffered;
+}
+//----------------------------
 
 vector<float>& ofxTLAudioTrack::getBufferForFrame(int _frame, int _size)
 {

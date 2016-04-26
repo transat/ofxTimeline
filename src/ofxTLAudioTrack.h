@@ -46,6 +46,7 @@ class ofxTLAudioTrack : public ofxTLTrack
 	
 	virtual void draw();
 	virtual void update();
+    
 	
 	virtual bool loadSoundfile(string filepath);
 	virtual bool isSoundLoaded();
@@ -87,6 +88,9 @@ class ofxTLAudioTrack : public ofxTLTrack
 	virtual void setVolume(float volume);
 	virtual void setPan(float pan);
     
+    int getSampleRate(){return player.getSampleRate();}
+    int getNumChannels(){return player.getNumChannels();}
+    
 	virtual string getTrackType();
 
     //FFT for audio reactive
@@ -98,6 +102,7 @@ class ofxTLAudioTrack : public ofxTLTrack
 	vector<float>& getFFT();
     int getBufferSize();
     vector<float> &getCurrentBuffer(int _size = 512);
+    vector<float> &getCurrentBufferForChannel(int _size = 512, int channel = 1);///*
     vector<float> &getBufferForFrame(int _frame, int _size = 512);
 
   protected:
