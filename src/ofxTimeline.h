@@ -156,6 +156,9 @@ class ofxTimeline : ofThread {
     virtual void setShowTicker(bool shouldShowTicker);
     virtual void setShowInoutControl(bool shouldShowInoutControl);
     virtual void setShowZoomer(bool shouldShowZoomer);
+    
+    virtual void setShowPageTabs(bool shouldShowPageTabs){showPageTabs = shouldShowPageTabs;}
+    virtual bool getIsShowingPageTabs(){return showPageTabs;}
 
     //sets where to save all timeline-related meta data xml files
     virtual void setWorkingFolder(string folderPath);
@@ -580,6 +583,7 @@ class ofxTimeline : ofThread {
     bool showTicker; 
     bool showInoutControl; 
     bool showZoomer;
+    bool showPageTabs; // LeoZ addition
     
     ofxXmlSettings settings;
 	string name;

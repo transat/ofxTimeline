@@ -88,6 +88,8 @@ class ofxTLPage {
 	virtual ofxTLTrack* getTrack(string name);
     virtual ofxTLTrackHeader* getTrackHeader(ofxTLTrack* track);
     
+    virtual int getTracksNum(){return trackList.size();}
+    
 	virtual void removeTrack(ofxTLTrack* track);
 
     

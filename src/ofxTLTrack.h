@@ -173,6 +173,8 @@ class ofxTLTrack
 	void setCreatedByTimeline(bool created);
 	ofxTLEvents& events(); //convenience wrapper for timeline events;
 
+    bool getViewIsDirty(){return viewIsDirty;}
+    
   protected:
 
 	ofxTimeline* timeline;

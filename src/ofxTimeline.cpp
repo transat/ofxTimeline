@@ -93,7 +93,8 @@ ofxTimeline::ofxTimeline()
 	//TODO: should be able to use bitmap font if need be
 	fontPath("GUI/NewMedia Fett.ttf"),
 	fontSize(9),
-	footersHidden(false)
+	footersHidden(false),
+    showPageTabs(true)
 {
 }
 
@@ -1197,7 +1198,7 @@ void ofxTimeline::mousePressed(ofMouseEventArgs& args){
 		}
 		timelineHasFocus = focus;
 		if(timelineHasFocus){
-			tabs->mousePressed(args);
+			if(showPageTabs) tabs->mousePressed(args);
 			inoutTrack->mousePressed(args);
 			ticker->mousePressed(args);
 			currentPage->mousePressed(args,millis);
@@ -1265,7 +1266,7 @@ void ofxTimeline::mouseReleased(ofMouseEventArgs& args){
     else{
 		inoutTrack->mouseReleased(args);
 		ticker->mouseReleased(args);
-		tabs->mouseReleased(args);
+		if(showPageTabs) tabs->mouseReleased(args);
 		currentPage->mouseReleased(args, millis);
 		zoomer->mouseReleased(args);
 	}
@@ -1561,7 +1562,7 @@ void ofxTimeline::draw(){
 		ofSetColor(255);
 
 		if (pages.size() > 1) {
-			tabs->draw();
+			if(showPageTabs)tabs->draw();
 		}
 
 		ofPushStyle();
