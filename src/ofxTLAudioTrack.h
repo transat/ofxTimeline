@@ -104,6 +104,7 @@ class ofxTLAudioTrack : public ofxTLTrack
     vector<float> &getCurrentBuffer(int _size = 512);
     vector<float> &getCurrentBufferForChannel(int _size = 512, int channel = 1);///*
     vector<float> &getBufferForFrame(int _frame, int _size = 512);
+    ofSoundBuffer& getCurrentSoundBuffer(int _size);///*
     
     vector<ofPolyline>& getPreviews(){return previews;}
     bool getShouldRecomputePreview(){return shouldRecomputePreview;}

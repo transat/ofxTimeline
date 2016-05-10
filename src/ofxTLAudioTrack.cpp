@@ -445,6 +445,12 @@ int ofxTLAudioTrack::getBufferSize()
 {
     return player.getBuffer().size() / player.getNumChannels();
 }
+//--------------------------------------
+ofSoundBuffer& ofxTLAudioTrack::getCurrentSoundBuffer(int _size){
+    return player.getCurrentSoundBuffer(_size);
+}
+
+//--------------------------------------
 
 vector<float>& ofxTLAudioTrack::getCurrentBuffer(int _size)
 {

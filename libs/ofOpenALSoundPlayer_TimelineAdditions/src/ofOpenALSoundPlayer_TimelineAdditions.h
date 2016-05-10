@@ -114,6 +114,10 @@ class ofOpenALSoundPlayer_TimelineAdditions : public ofBaseSoundPlayer, public o
         vector<float>& getBufferForFrame(int _frame, float _fps, int _size);
         vector<float>& getCurrentBufferForChannel(int _size, int channel);
         vector<float> currentBuffer;
+        ofSoundBuffer& getCurrentSoundBuffer(int _size);
+        ofSoundBuffer currentSoundBuffer;
+        ofSoundBuffer channelSoundBuffer;
+    
 
         float * getSystemSpectrum(int bands);
     
