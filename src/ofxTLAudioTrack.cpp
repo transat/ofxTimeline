@@ -131,22 +131,24 @@ void ofxTLAudioTrack::draw(){
     ofPopStyle();
 	
 
-    
-    ofPushStyle();
-    
-    //will refresh fft bins for other calls too
-    vector<float>& bins = getFFT();
-    float binWidth = bounds.width / bins.size();
-    
-    ofFill();
-    ofSetColor(timeline->getColors().disabledColor, 120);
-    for(int i = 0; i < bins.size(); i++){
-        float height = MIN(bounds.height * bins[i], bounds.height);
-        float y = bounds.y + bounds.height - height;
-        ofRect(i*binWidth, y, binWidth, height);
+    //fft draw in audioTrack
+    if(bDrawFFT){
+        ofPushStyle();
+        
+        //will refresh fft bins for other calls too
+        vector<float>& bins = getFFT();
+        float binWidth = bounds.width / bins.size();
+        
+        ofFill();
+        ofSetColor(timeline->getColors().disabledColor, 120);
+        for(int i = 0; i < bins.size(); i++){
+            float height = MIN(bounds.height * bins[i], bounds.height);
+            float y = bounds.y + bounds.height - height;
+            ofRect(i*binWidth, y, binWidth, height);
+        }
+        
+        ofPopStyle();
     }
-    
-    ofPopStyle();
 }
 
 
@@ -448,6 +450,10 @@ int ofxTLAudioTrack::getBufferSize()
 //--------------------------------------
 ofSoundBuffer& ofxTLAudioTrack::getCurrentSoundBuffer(int _size){
     return player.getCurrentSoundBuffer(_size);
+}
+//--------------------------------------
+ofSoundBuffer& ofxTLAudioTrack::getCurrentSoundBufferMono(int _size){
+    return player.getCurrentSoundBufferMono(_size);
 }
 
 //--------------------------------------

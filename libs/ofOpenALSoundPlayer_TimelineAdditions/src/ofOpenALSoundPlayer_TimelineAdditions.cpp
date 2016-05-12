@@ -994,7 +994,6 @@ vector<float>& ofOpenALSoundPlayer_TimelineAdditions::getCurrentBufferForChannel
 ofSoundBuffer& ofOpenALSoundPlayer_TimelineAdditions::getCurrentSoundBuffer(int _size){
     
     if(currentSoundBuffer.getNumChannels()!= channels){
-        //currentSoundBuffer.setNumChannels(channels);
         ofLogError()<<"Sound Player: currentSoundBuffer incorrect NumChannels";
         return;
     }
@@ -1014,6 +1013,20 @@ ofSoundBuffer& ofOpenALSoundPlayer_TimelineAdditions::getCurrentSoundBuffer(int 
     }
     
     return currentSoundBuffer;
+    
+}
+//-----------------------------------------------------------
+ofSoundBuffer& ofOpenALSoundPlayer_TimelineAdditions::getCurrentSoundBufferMono(int _size){
+    
+
+    if(channelSoundBuffer.getSampleRate()!= samplerate){
+        ofLogError()<<"Sound Player: channelSoundBuffer incorrect Sample Rate";
+        return;
+    }
+
+    channelSoundBuffer.copyFrom( getCurrentBuffer(512), 1, samplerate);
+
+    return channelSoundBuffer;
     
 }
 //-----------------------------------------------------------

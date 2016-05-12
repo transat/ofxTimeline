@@ -93,6 +93,8 @@ class ofxTLAudioTrack : public ofxTLTrack
     
 	virtual string getTrackType();
 
+    void setDrawFFT(bool b){bDrawFFT = b;}
+    
     //FFT for audio reactive
     void setFFTLogAverages(int minBandwidth = 88, int bandsPerOctave = 20);
     int getLogAverageMinBandwidth();
@@ -104,7 +106,9 @@ class ofxTLAudioTrack : public ofxTLTrack
     vector<float> &getCurrentBuffer(int _size = 512);
     vector<float> &getCurrentBufferForChannel(int _size = 512, int channel = 1);///*
     vector<float> &getBufferForFrame(int _frame, int _size = 512);
-    ofSoundBuffer& getCurrentSoundBuffer(int _size);///*
+    
+    ofSoundBuffer& getCurrentSoundBuffer(int _size);//*
+    ofSoundBuffer& getCurrentSoundBufferMono(int _size);//*
     
     vector<ofPolyline>& getPreviews(){return previews;}
     bool getShouldRecomputePreview(){return shouldRecomputePreview;}
@@ -137,6 +141,8 @@ class ofxTLAudioTrack : public ofxTLTrack
     int averageSize;
     bool useEnvelope;
     vector<float> envelope;
+    
+    bool bDrawFFT = false;
 };
 
 #endif  // TIMELINE_AUDIO_INCLUDED

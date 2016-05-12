@@ -114,7 +114,11 @@ class ofOpenALSoundPlayer_TimelineAdditions : public ofBaseSoundPlayer, public o
         vector<float>& getBufferForFrame(int _frame, float _fps, int _size);
         vector<float>& getCurrentBufferForChannel(int _size, int channel);
         vector<float> currentBuffer;
+    
+        //!Returns current buffer as multichannel ofSoundBuffer
         ofSoundBuffer& getCurrentSoundBuffer(int _size);
+        //!Returns current buffer as a mono ofSoundBuffer
+        ofSoundBuffer& getCurrentSoundBufferMono(int _size);
         ofSoundBuffer currentSoundBuffer;
         ofSoundBuffer channelSoundBuffer;
     
