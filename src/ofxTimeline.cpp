@@ -96,9 +96,9 @@ ofxTimeline::ofxTimeline()
 	headersAreEditable(false),
 	minimalHeaders(false),
    	//copy from ofxTimeline/assets into bin/data/
-	defaultPalettePath("GUI/defaultColorPalette.png"),
+	defaultPalettePath("timeline_GUI/defaultColorPalette.png"),
 	//TODO: should be able to use bitmap font if need be
-	fontPath("GUI/NewMedia Fett.ttf"),
+	fontPath("timeline_GUI/NewMedia Fett.ttf"),
 	fontSize(9),
 	footersHidden(false),
     showPageTabs(true)
