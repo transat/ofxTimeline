@@ -1008,7 +1008,7 @@ ofSoundBuffer& ofOpenALSoundPlayer_TimelineAdditions::getCurrentSoundBuffer(int 
     
     
     for (int i=0; i<channels; i++){
-        channelSoundBuffer.copyFrom( getCurrentBufferForChannel(512, i), 1, samplerate);
+        channelSoundBuffer.copyFrom( getCurrentBufferForChannel(_size, i), 1, samplerate);
         currentSoundBuffer.setChannel(channelSoundBuffer, i);
     }
     
@@ -1024,7 +1024,7 @@ ofSoundBuffer& ofOpenALSoundPlayer_TimelineAdditions::getCurrentSoundBufferMono(
         return;
     }
 
-    channelSoundBuffer.copyFrom( getCurrentBuffer(512), 1, samplerate);
+    channelSoundBuffer.copyFrom( getCurrentBuffer(_size), 1, samplerate);
 
     return channelSoundBuffer;
     
