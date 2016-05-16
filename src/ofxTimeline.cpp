@@ -44,14 +44,14 @@ bool headersort(ofxTLTrackHeader* a, ofxTLTrackHeader* b){
 }
 
 #define TAB_HEIGHT 1//18(-17)
-#define TICKER_HEIGHT 27//27
-#define ZOOMER_HEIGHT 17//14(+3)
-#define INOUT_HEIGHT 16//7(+9)
+#define TICKER_HEIGHT 20//27 (-7)
+#define ZOOMER_HEIGHT 21//14(+7)
+#define INOUT_HEIGHT 19//7(+12)
 
 
 /*
  see
- #define FOOTER_HEIGHT in ofxTLTrackHeader.h (+5)
+ #define FOOTER_HEIGHT in ofxTLTrackHeader.h (+8)
  
  */
 
@@ -1551,7 +1551,7 @@ void ofxTimeline::checkLoop(){
     }
 }
 
-void ofxTimeline::draw(){
+void ofxTimeline::draw(bool drawTickerMarks){
 
 	if(isSetup && isShowing){
 		ofPushStyle();
@@ -1577,8 +1577,10 @@ void ofxTimeline::draw(){
 		if(showZoomer)zoomer->_draw();
 
 		//draw these because they overlay the rest of the timeline with info
-        ticker->_draw();
-		inoutTrack->_draw();
+        ///ticker->_draw();
+        ticker->draw(drawTickerMarks);
+		
+        inoutTrack->_draw();
         ofPopStyle();
 
 		if(modalTrack != NULL){

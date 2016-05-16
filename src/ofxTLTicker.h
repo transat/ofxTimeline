@@ -47,7 +47,11 @@ class ofxTLTicker : public ofxTLTrack
 	ofxTLTicker();
 	~ofxTLTicker();
 	
-	void draw();
+    void draw();
+    
+    //!Function that allows to avoid drawing tickerMarks as they consume high resources
+	void draw(bool drawTickerMarks);
+    
 	
 	//set the draw rect for the whole keyframer interface
 	virtual void setTotalDrawRect(ofRectangle drawRect);

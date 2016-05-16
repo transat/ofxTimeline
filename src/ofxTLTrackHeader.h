@@ -36,7 +36,7 @@
 #include "ofxTLTrack.h"
 #include "ofxTextInputField.h"
 
-#define FOOTER_HEIGHT 11//6(+5)
+#define FOOTER_HEIGHT 14//6(+8)
 
 class ofxTLTrackHeader : public ofxTLTrack
 {
