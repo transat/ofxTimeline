@@ -449,11 +449,14 @@ int ofxTLAudioTrack::getBufferSize()
 }
 //--------------------------------------
 ofSoundBuffer& ofxTLAudioTrack::getCurrentSoundBuffer(int _size){
-    return player.getCurrentSoundBuffer(_size);
+    
+    soundBuffered =  player.getCurrentSoundBuffer(_size);
+    return soundBuffered;
 }
 //--------------------------------------
 ofSoundBuffer& ofxTLAudioTrack::getCurrentSoundBufferMono(int _size){
-    return player.getCurrentSoundBufferMono(_size);
+    soundBuffered =  player.getCurrentSoundBufferMono(_size);
+    return soundBuffered;
 }
 
 //--------------------------------------
@@ -470,7 +473,29 @@ vector<float>& ofxTLAudioTrack::getCurrentBufferForChannel(int _size, int channe
     return buffered;
 }
 //----------------------------
+ofSoundBuffer& ofxTLAudioTrack::getSoundBufferForFrame(int _frame, int _size){
+    
+    if(_frame != lastBufferPosition)
+    {
+        lastBufferPosition = _frame;
+        soundBuffered = player.getSoundBufferForFrame(_frame, timeline->getTimecode().getFPS(), _size);
+        return soundBuffered;
+    }
+    return soundBuffered;
+}
 
+//----------------------------
+ofSoundBuffer& ofxTLAudioTrack::getSoundBufferMonoForFrame(int _frame, int _size){
+    
+    if(_frame != lastBufferPosition)
+    {
+        lastBufferPosition = _frame;
+        soundBuffered = player.getSoundBufferMonoForFrame(_frame, timeline->getTimecode().getFPS(), _size);
+        return soundBuffered;
+    }
+    return soundBuffered;
+}
+//----------------------------
 vector<float>& ofxTLAudioTrack::getBufferForFrame(int _frame, int _size)
 {
     if(_frame != lastBufferPosition)

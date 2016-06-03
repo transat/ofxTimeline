@@ -107,8 +107,13 @@ class ofxTLAudioTrack : public ofxTLTrack
     vector<float> &getCurrentBufferForChannel(int _size = 512, int channel = 1);///*
     vector<float> &getBufferForFrame(int _frame, int _size = 512);
     
-    ofSoundBuffer& getCurrentSoundBuffer(int _size);//*
-    ofSoundBuffer& getCurrentSoundBufferMono(int _size);//*
+    ofSoundBuffer& getCurrentSoundBuffer(int _size);//ofxAA
+    ofSoundBuffer& getCurrentSoundBufferMono(int _size);//ofxAA
+    
+    
+    ofSoundBuffer& getSoundBufferForFrame(int _frame, int _size);//ofxAA
+    ofSoundBuffer& getSoundBufferMonoForFrame(int _frame, int _size);//ofxAA
+    
     
     vector<ofPolyline>& getPreviews(){return previews;}
     bool getShouldRecomputePreview(){return shouldRecomputePreview;}
@@ -128,6 +133,8 @@ class ofxTLAudioTrack : public ofxTLTrack
 
     vector<float> dampened;
     vector<float> buffered;
+    
+    ofSoundBuffer soundBuffered;//ofxAA
     
 	float lastPercent;
     
