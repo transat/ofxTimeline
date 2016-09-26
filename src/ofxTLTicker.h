@@ -72,6 +72,9 @@ class ofxTLTicker : public ofxTLTrack
 	bool getIsScrubbing();
     
     void updateBPMPoints();
+    
+    void addMarker(float millis);
+    void clearMarkers();
 	
   protected:
 	void updateTimelinePosition();
@@ -87,5 +90,6 @@ class ofxTLTicker : public ofxTLTrack
 	bool playOnMouseReleased;
     
 	ofPath tickerMarks;
+    ofPath customMarkers;///twk
 	void refreshTickMarks();
 };

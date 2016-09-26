@@ -151,7 +151,20 @@ void ofxTLAudioTrack::draw(){
     }
 }
 
+///twk
+void ofxTLAudioTrack::drawWaveforms(){
 
+    ofPushStyle();
+    
+    ofSetColor(120);//arbitrary color
+    
+    for(int i=0; i<previews.size(); i++){
+        previews[i].draw();
+    }
+    ofPopStyle();
+    
+    viewIsDirty = false;
+}
 
 float ofxTLAudioTrack::positionForSecond(float second){
 	if(isSoundLoaded()){

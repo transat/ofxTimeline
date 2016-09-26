@@ -53,7 +53,9 @@ class ofxTLPage {
 	virtual void setup();
 	virtual void update();
 	virtual void draw();
-
+    
+    virtual void drawWhenNotDragging();///twk
+    
 	virtual void setName(string name);
 	virtual string getName();
 	
@@ -135,6 +137,8 @@ class ofxTLPage {
     virtual void setSnappingEnabled(bool enabled);
     
     ofxTimeline* timeline;
+    
+    bool getFooterIsDragging(){return footerIsDragging;}///twk
     
   protected:
 

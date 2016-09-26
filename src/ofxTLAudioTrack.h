@@ -47,6 +47,7 @@ class ofxTLAudioTrack : public ofxTLTrack
 	virtual void draw();
 	virtual void update();
     
+    virtual void drawWaveforms();
 	
 	virtual bool loadSoundfile(string filepath);
 	virtual bool isSoundLoaded();

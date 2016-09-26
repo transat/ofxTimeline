@@ -159,6 +159,7 @@ void ofxTLTicker::draw(){
 
 }
 
+
 void ofxTLTicker::draw(bool drawTickerMarks){
 	
 	if(bounds.height == 0){
@@ -185,6 +186,14 @@ void ofxTLTicker::draw(bool drawTickerMarks){
         tickerMarks.setStrokeWidth(1);
         tickerMarks.draw(0, bounds.y);///high resources consuming!
     }
+    
+    ///CUSTOM MARKERS TEST:
+    
+    customMarkers.setStrokeColor( ofColor::mediumOrchid );
+    customMarkers.setStrokeWidth(3);
+    customMarkers.draw(0, bounds.y);
+    
+    ///-------------------
 		
     if(drawBPMGrid){
 		if(viewIsDirty){
@@ -269,6 +278,19 @@ void ofxTLTicker::draw(bool drawTickerMarks){
 	ofRect(bounds);
 		
 	ofPopStyle();
+}
+
+///twk
+void ofxTLTicker::addMarker(float millis){
+    
+    float x = millisToScreenX(millis);
+    customMarkers.moveTo(x, bounds.height - bounds.height);
+    customMarkers.lineTo(x, bounds.height);
+    
+}
+
+void ofxTLTicker::clearMarkers(){
+    customMarkers.clear();
 }
 
 void ofxTLTicker::setHoverTime(unsigned long long millis){

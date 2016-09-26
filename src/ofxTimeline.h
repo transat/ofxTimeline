@@ -95,7 +95,8 @@ class ofxTimeline : ofThread {
 	virtual ~ofxTimeline();
 
 	virtual void setup();
-	
+    virtual void setup(string firstPageName);///twk
+    
 	//Optionally run ofxTimeline on the background thread
 	//this isn't necessary most of the time but
 	//for precise timing apps and input recording it'll greatly
@@ -448,6 +449,8 @@ class ofxTimeline : ofThread {
 	ofxTimecode& getTimecode();
 	ofxMSATimer& getTimer();
 	ofxTLZoomer* getZoomer();
+    
+    ofxTLTicker* getTicker();// LeoZ addition
 	
 	vector<ofxTLPage*>& getPages();
     
@@ -489,6 +492,8 @@ class ofxTimeline : ofThread {
     float normalizedXtoScreenX(float x, ofRange inputRange);    
     
     virtual ofxTLEvents& events();
+    
+    void resetInOutTrack();///twk.
     
 	//binary test hack
 	bool curvesUseBinary;

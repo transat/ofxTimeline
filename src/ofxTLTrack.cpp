@@ -162,6 +162,7 @@ unsigned long long ofxTLTrack::currentTrackTime(){
 }
 
 void ofxTLTrack::checkLoop(){
+    
 	if(currentTime < timeline->getInTimeInMillis()){
         currentTime = timeline->getInTimeInMillis();
         playbackStartTime = timeline->getTimer().getAppTimeSeconds() - currentTime;

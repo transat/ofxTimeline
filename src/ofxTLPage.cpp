@@ -120,7 +120,8 @@ void ofxTLPage::update(){
 }
 
 void ofxTLPage::draw(){	
-	for(int i = 0; i < headers.size(); i++){
+	
+    for(int i = 0; i < headers.size(); i++){
 		tracks[headers[i]->name]->_draw();
 		headers[i]->draw();
 	}
@@ -151,6 +152,46 @@ void ofxTLPage::draw(){
 		ofRect(selectionRectangle);
 		
 	}
+    
+}
+
+///Twk: Hide tracks is footer is being dragged to save computation resources
+void ofxTLPage::drawWhenNotDragging(){
+    
+    for(int i = 0; i < headers.size(); i++){
+        ///Check for footer is dragging
+        if(!footerIsDragging){
+            tracks[headers[i]->name]->_draw();
+        }
+        headers[i]->draw();
+    }
+    
+    if(!headerHasFocus && !footerIsDragging && draggingInside && snapPoints.size() > 0){
+        ofPushStyle();
+        ofSetColor(255,255,255,100);
+        set<unsigned long long>::iterator it;
+        //		for(int i = 0; i < snapPoints.size(); i++){
+        for(it = snapPoints.begin(); it != snapPoints.end(); it++){
+            ofLine(timeline->millisToScreenX(*it), trackContainerRect.y,
+                   timeline->millisToScreenX(*it), trackContainerRect.y+trackContainerRect.height);
+        }
+        ofPopStyle();
+    }
+    
+    //	for(int i = 0; i < headers.size(); i++){
+    //		tracks[headers[i]->name]->drawModalContent();
+    //	}
+    
+    if(draggingSelectionRectangle){
+        ofFill();
+        ofSetColor(timeline->getColors().keyColor, 30);
+        ofRect(selectionRectangle);
+        
+        ofNoFill();
+        ofSetColor(timeline->getColors().keyColor, 255);
+        ofRect(selectionRectangle);
+        
+    }
 }
 
 void ofxTLPage::timelineGainedFocus(){
@@ -344,6 +385,8 @@ void ofxTLPage::mouseReleased(ofMouseEventArgs& args, long millis){
 		}		        
     }
 	draggingSelectionRectangle = false;
+    
+    footerIsDragging = false;///twk. ????
 }
 
 void ofxTLPage::setDragOffsetTime(long offsetMillis){

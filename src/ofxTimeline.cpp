@@ -96,9 +96,9 @@ ofxTimeline::ofxTimeline()
 	headersAreEditable(false),
 	minimalHeaders(false),
    	//copy from ofxTimeline/assets into bin/data/
-	defaultPalettePath("timeline_GUI/defaultColorPalette.png"),
+	defaultPalettePath("gui_assets/timeline_GUI/defaultColorPalette.png"),
 	//TODO: should be able to use bitmap font if need be
-	fontPath("timeline_GUI/NewMedia Fett.ttf"),
+	fontPath("gui_assets/timeline_GUI/NewMedia Fett.ttf"),
 	fontSize(9),
 	footersHidden(false),
     showPageTabs(true)
@@ -175,13 +175,67 @@ void ofxTimeline::setup(){
 
 	if(name == ""){
 	    setName("timeline" + ofToString(timelineNumber++));
-	}
+    }
 	setupStandardElements();
 
 }
+///Same function as setup, but not using "Page One" as default name
+void ofxTimeline::setup(string firstPageName){
+    isSetup = true;
+    
+    width = ofGetWidth();
+    
+    if(tabs != NULL){
+        delete tabs;
+    }
+    tabs = new ofxTLPageTabs();
+    tabs->setTimeline(this);
+    tabs->setup();
+    tabs->setDrawRect(ofRectangle(offset.x, offset.y, width, TAB_HEIGHT));
+    
+    if(inoutTrack != NULL){
+        delete inoutTrack;
+    }
+    inoutTrack = new ofxTLInOut();
+    inoutTrack->setTimeline(this);
+    inoutTrack->setDrawRect(ofRectangle(offset.x, tabs->getBottomEdge(), width, INOUT_HEIGHT));
+    
+    if(ticker != NULL){
+        delete ticker;
+    }
+    ticker = new ofxTLTicker();
+    ticker->setTimeline(this);
+    
+    //TODO: save ticker playhead position
+    ticker->setup();
+    ticker->setDrawRect(ofRectangle(offset.x, inoutTrack->getBottomEdge(), width, TICKER_HEIGHT));
+    if(zoomer != NULL){
+        delete zoomer;
+    }
+    zoomer = new ofxTLZoomer();
+    zoomer->setTimeline(this);
+    zoomer->setDrawRect(ofRectangle(offset.y, ticker->getBottomEdge(), width, ZOOMER_HEIGHT));
+    
+    colors.load();
+    
+    enable();
+    
+    ofAddListener(timelineEvents.viewWasResized, this, &ofxTimeline::viewWasResized);
+    ofAddListener(timelineEvents.pageChanged, this, &ofxTimeline::pageChanged);
+    ofAddListener(ofEvents().update, this, &ofxTimeline::update);
+    
+    //You can change this name by calling setPageName()
+    addPage(firstPageName, true);///twk
+    
+    if(name == ""){
+        //setName("timeline" + ofToString(timelineNumber++));
+         setName("tl");
+    }
+    setupStandardElements();
+}
 
 void ofxTimeline::moveToThread(){
-	if(!isOnThread){
+    if(!isOnThread){
 		stop();
 		isOnThread = true;
 		ofRemoveListener(ofEvents().update, this, &ofxTimeline::update);
@@ -219,6 +273,10 @@ void ofxTimeline::setName(string newName){
 			}
 		}
     }
+}
+
+void ofxTimeline::resetInOutTrack(){
+    inoutTrack->load();
 }
 
 void ofxTimeline::setupStandardElements(){
@@ -539,7 +597,7 @@ void ofxTimeline::play(){
         if(isDone()){
             setPercentComplete(0.0);
         }
-
+        
 		isPlaying = true;
         currentTime = ofClamp(currentTime, getInTimeInSeconds(), getOutTimeInSeconds());
         playbackStartTime = timer.getAppTimeSeconds() - currentTime;
@@ -882,8 +940,11 @@ void ofxTimeline::reset(){ //gets rid of everything
     currentPage = NULL;
     modalTrack = NULL;
     timeControl = NULL;
-	addPage("Page One", true);
-//	if(isOnThread){
+	
+    ///twk: necessary??
+    ///addPage("Page One", true);
+
+    //	if(isOnThread){
 //		startThread();
 //	}
 
@@ -1530,6 +1591,7 @@ void ofxTimeline::checkEvents(){
 }
 
 void ofxTimeline::checkLoop(){
+    
 	if(currentTime < durationInSeconds*inoutRange.min){
         currentTime = durationInSeconds*inoutRange.min;
         playbackStartTime = timer.getAppTimeSeconds() - currentTime;
@@ -1537,6 +1599,7 @@ void ofxTimeline::checkLoop(){
     }
 
     if(currentTime >= durationInSeconds*inoutRange.max){
+        
         if(loopType == OF_LOOP_NONE){
             currentTime = durationInSeconds*inoutRange.max;
             stop();
@@ -1573,14 +1636,17 @@ void ofxTimeline::draw(bool drawTickerMarks){
 		}
 
 		ofPushStyle();
-		currentPage->draw();
-		if(showZoomer)zoomer->_draw();
+        
+		currentPage->drawWhenNotDragging();//tweaked
+		
+        if(showZoomer)zoomer->_draw();
 
 		//draw these because they overlay the rest of the timeline with info
-        ///ticker->_draw();
+        //ticker->_draw();
         ticker->draw(drawTickerMarks);
 		
         inoutTrack->_draw();
+        
         ofPopStyle();
 
 		if(modalTrack != NULL){
@@ -1765,6 +1831,10 @@ ofxTLTrack* ofxTimeline::getTimecontrolTrack(){
 
 ofxTLZoomer* ofxTimeline::getZoomer(){
 	return zoomer;
+}
+
+ofxTLTicker* ofxTimeline::getTicker(){
+    return ticker;
 }
 
 //can be used to add custom elements
