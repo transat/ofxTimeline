@@ -16,3 +16,6 @@ On the project tab / building settings, you have to add the lines 'TIMELINE_AUDI
 On the '/src/ofApp.h' of your project file, you have to add the lines:
 #include "ofxTLAudioTrack.h"
 #include "ofxTLVideoTrack.h"
+
+5-
+If you want to do audio you need to add the ![image](OpenAL.framework.png)

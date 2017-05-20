@@ -2,37 +2,49 @@
     <key>
         <type>0</type>
         <phaseShift>0.000000000</phaseShift>
-        <amplitude>1.000000000</amplitude>
-        <frequency>11.799995422</frequency>
+        <amplitude>0.111999929</amplitude>
+        <frequency>1.000000000</frequency>
         <seed>0.000000000</seed>
         <center>0.000000000</center>
         <interpolate>1</interpolate>
         <expInterpolate>0</expInterpolate>
-        <time>00:00:01:961</time>
-        <value>0.301569343</value>
+        <time>00:00:01:000</time>
+        <value>0.496424496</value>
+    </key>
+    <key>
+        <type>0</type>
+        <phaseShift>0.000000000</phaseShift>
+        <amplitude>0.243999988</amplitude>
+        <frequency>163.699996948</frequency>
+        <seed>0.000000000</seed>
+        <center>0.000000000</center>
+        <interpolate>1</interpolate>
+        <expInterpolate>0</expInterpolate>
+        <time>00:00:07:822</time>
+        <value>0.552457571</value>
+    </key>
+    <key>
+        <type>1</type>
+        <phaseShift>0.000000000</phaseShift>
+        <amplitude>0.842000008</amplitude>
+        <frequency>39.600002289</frequency>
+        <seed>0.000000000</seed>
+        <center>0.058000002</center>
+        <interpolate>1</interpolate>
+        <expInterpolate>0</expInterpolate>
+        <time>00:00:16:087</time>
+        <value>0.740566015</value>
     </key>
     <key>
         <type>0</type>
         <phaseShift>0.000000000</phaseShift>
         <amplitude>1.000000000</amplitude>
-        <frequency>100.000000000</frequency>
-        <seed>0.000000000</seed>
-        <center>0.000000000</center>
-        <interpolate>0</interpolate>
-        <expInterpolate>1</expInterpolate>
-        <time>00:00:08:111</time>
-        <value>0.236879826</value>
-    </key>
-    <key>
-        <type>1</type>
-        <phaseShift>0.000000000</phaseShift>
-        <amplitude>1.000000000</amplitude>
-        <frequency>100.000000000</frequency>
+        <frequency>9.999995232</frequency>
         <seed>0.000000000</seed>
         <center>0.000000000</center>
         <interpolate>1</interpolate>
         <expInterpolate>0</expInterpolate>
-        <time>00:00:24:224</time>
-        <value>0.660169482</value>
+        <time>00:00:18:808</time>
+        <value>0.540925264</value>
     </key>
 </keyframes>

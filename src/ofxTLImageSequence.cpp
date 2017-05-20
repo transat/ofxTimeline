@@ -95,10 +95,10 @@ bool ofxTLImageSequence::loadSequence(string directory){
 	if(imageType == OF_IMAGE_UNDEFINED){
 		//sniff the first file
 		ofImage testImage;
-		if(!testImage.loadImage(list.getPath(0))){
+		if(!testImage.load(list.getPath(0))){
 			ofLogError("ofxTLImageSequence -- error loading test file: " + list.getPath(0));
 		}
-		imageType = testImage.getPixelsRef().getImageType();
+		imageType = testImage.getPixels().getImageType();
 	}
 	
 	for(int i = 0; i < numFiles; i++){
@@ -149,7 +149,7 @@ ofImage* ofxTLImageSequence::getImageAtTime(float time){
 
 ofImage* ofxTLImageSequence::getImageAtFrame(int frame){
 	if(frame >= frames.size()){
-		ofLog(OF_LOG_ERROR, "THISSequence -- accessing index %d when we only have %d frames. Returning last frame instead.", frame, frames.size());
+		ofLog(OF_LOG_ERROR, "THISSequence -- accessing index %d when we only have %lu frames. Returning last frame instead.", frame, frames.size());
 		frame = frames.size()-1;
 	}
 //	if(thumb){
@@ -232,8 +232,8 @@ void ofxTLImageSequence::recomputePreview(){
 		
 		p.frameIndex = startIndex+frameStep*i;
 		p.texture = new ofTexture();
-		p.texture->allocate(thumbnail->getWidth(), thumbnail->getHeight(), ofGetGlInternalFormat(thumbnail->getPixelsRef()));
-		p.texture->loadData(thumbnail->getPixels(), thumbnail->getWidth(), thumbnail->getHeight(), ofGetGlInternalFormat(thumbnail->getPixelsRef()));
+		p.texture->allocate(thumbnail->getWidth(), thumbnail->getHeight(), ofGetGlInternalFormat(thumbnail->getPixels()));
+		p.texture->loadData(thumbnail->getPixels());//, thumbnail->getWidth(), thumbnail->getHeight(), ofGetGlInternalFormat(thumbnail->getPixels()));
 		p.bounds = ofRectangle(widthPerFrame*i, 0, widthPerFrame, bounds.height);
 
 //		cout << " preview texture for frame " << startIndex+framesInRange*i << endl;

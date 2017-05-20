@@ -1627,7 +1627,7 @@ void ofxTimeline::draw(bool drawTickerMarks){
 		ofEnableAlphaBlending();
 
         ofSetColor(colors.guiBackgroundColor);
-		ofRect(totalDrawRect);
+		ofDrawRectangle(totalDrawRect);
 
 		ofSetColor(255);
 

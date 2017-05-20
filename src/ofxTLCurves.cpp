@@ -86,7 +86,7 @@ void ofxTLCurves::drawModalContent(){
             ofSetColor(80, 80, 80);
         }
         ofFill();
-        ofRect(easingWindowPosition.x + easingTypes[i]->bounds.x, easingWindowPosition.y + easingTypes[i]->bounds.y,
+        ofDrawRectangle(easingWindowPosition.x + easingTypes[i]->bounds.x, easingWindowPosition.y + easingTypes[i]->bounds.y,
                easingTypes[i]->bounds.width, easingTypes[i]->bounds.height);
         ofSetColor(200, 200, 200);
         timeline->getFont().drawString(easingTypes[i]->name,
@@ -94,7 +94,7 @@ void ofxTLCurves::drawModalContent(){
 									   easingWindowPosition.y + easingTypes[i]->bounds.y+10);
         ofNoFill();
         ofSetColor(40, 40, 40);
-        ofRect(easingWindowPosition.x + easingTypes[i]->bounds.x,
+        ofDrawRectangle(easingWindowPosition.x + easingTypes[i]->bounds.x,
                easingWindowPosition.y + easingTypes[i]->bounds.y,
                easingTypes[i]->bounds.width, easingTypes[i]->bounds.height);
     }
@@ -108,7 +108,7 @@ void ofxTLCurves::drawModalContent(){
             ofSetColor(80, 80, 80);
         }
         ofFill();
-        ofRect(easingWindowPosition.x + easingFunctions[i]->bounds.x, easingWindowPosition.y +easingFunctions[i]->bounds.y,
+        ofDrawRectangle(easingWindowPosition.x + easingFunctions[i]->bounds.x, easingWindowPosition.y +easingFunctions[i]->bounds.y,
                easingFunctions[i]->bounds.width, easingFunctions[i]->bounds.height);
         ofSetColor(200, 200, 200);
 //        timeline->getFont().drawString(easingFunctions[i]->name,
@@ -130,7 +130,7 @@ void ofxTLCurves::drawModalContent(){
 		ofPopMatrix();
         ofNoFill();
         ofSetColor(40, 40, 40);
-        ofRect(easingWindowPosition.x + easingFunctions[i]->bounds.x, easingWindowPosition.y +easingFunctions[i]->bounds.y,
+        ofDrawRectangle(easingWindowPosition.x + easingFunctions[i]->bounds.x, easingWindowPosition.y +easingFunctions[i]->bounds.y,
                easingFunctions[i]->bounds.width, easingFunctions[i]->bounds.height);
     }
 

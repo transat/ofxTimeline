@@ -10,43 +10,42 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
-	
-	ofBackground(255*.15);
-	ofSetFrameRate(30);
-	ofSetVerticalSync(true);
-	
-	ofEnableSmoothing();
-	ofEnableAlphaBlending();
-
-	//lets you use COMMAND+C and COMMAND+V actions on mac
-	ofxTimeline::removeCocoaMenusFromGlut("Empty Templates");
-	
-	timeline.setup();
-	timeline.setLoopType(OF_LOOP_NORMAL);
-	timeline.setDurationInSeconds(30);
     
-	//this is the simplest example and is really flexible
-	emptyTrack = new ofxTLEmptyTrack();
-	timeline.addTrack("My Custom Track", emptyTrack);
-
-	//a very simple color keyframe
-	emptyKeyframes = new ofxTLEmptyKeyframes();
-	emptyKeyframes->setXMLFileName("MyEmptyKeyframes.xml");
-	timeline.addTrack("My Custom Keyframes", emptyKeyframes);
-
+    ofBackground(255*.15);
+    ofSetFrameRate(30);
+    ofSetVerticalSync(true);
+    
+    ofEnableSmoothing();
+    ofEnableAlphaBlending();
+    
+    //lets you use COMMAND+C and COMMAND+V actions on mac
+    ofxTimeline::removeCocoaMenusFromGlut("Empty Templates");
+    
+    timeline.setup();
+    timeline.setLoopType(OF_LOOP_NORMAL);
+    timeline.setDurationInSeconds(30);
+    
+    //this is the simplest example and is really flexible
+    emptyTrack = new ofxTLEmptyTrack();
+    timeline.addTrack("My Custom Track", emptyTrack);
+    
+    //a very simple color keyframe
+    emptyKeyframes = new ofxTLEmptyKeyframes();
+    emptyKeyframes->setXMLFileName("MyEmptyKeyframes.xml");
+    timeline.addTrack("My Custom Keyframes", emptyKeyframes);
+    
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
-		
+
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
     float curtime = timeline.getCurrentTime();
-	timeline.draw();
+    timeline.draw();
 }
-
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
@@ -75,6 +74,16 @@ void ofApp::mousePressed(int x, int y, int button){
 
 //--------------------------------------------------------------
 void ofApp::mouseReleased(int x, int y, int button){
+
+}
+
+//--------------------------------------------------------------
+void ofApp::mouseEntered(int x, int y){
+
+}
+
+//--------------------------------------------------------------
+void ofApp::mouseExited(int x, int y){
 
 }
 
