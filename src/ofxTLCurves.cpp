@@ -199,6 +199,15 @@ void ofxTLCurves::keyPressed(ofKeyEventArgs& args){
         }
     }
 
+    if ( args.key == 'q')
+    {
+        //this is how i access the
+        ofxTLKeyframes::quantizeKeys(10);
+        
+        ofxTLKeyframes::addKeyframeAtMillis(50.0,2000.0);
+
+    }
+    
 	ofxTLKeyframes::keyPressed( args );
 
 

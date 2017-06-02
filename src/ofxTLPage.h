@@ -72,6 +72,8 @@ class ofxTLPage {
 	void evenlyDistributeTrackHeights();
 	void expandFocusedTrack();
 	void setExpandToHeight(float height);
+    
+    void setTrackHeight(float height);
 		
 	virtual void setZoomBounds(ofRange zoomBounds);
 	

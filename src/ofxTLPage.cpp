@@ -612,6 +612,15 @@ void ofxTLPage::setExpandToHeight(float height){
 	heightBeforeCollapse = height;
 }
 
+void ofxTLPage::setTrackHeight(float height){
+    ofRectangle trackRect = headers[0]->getTrack()->getDrawRect();
+    trackRect.height = height;
+    headers[0]->getTrack()->setDrawRect(trackRect);
+    
+    recalculateHeight();
+}
+
+
 void ofxTLPage::evenlyDistributeTrackHeights(){
 	float addedHeightPerTrack = 0;
 	if(!headersAreMinimal)addedHeightPerTrack += headerHeight;
@@ -789,7 +798,7 @@ void ofxTLPage::loadTrackPositions(){
 	string positionFileName = ofToDataPath(timeline->getWorkingFolder() + timeline->getName() + "_" + xmlPageName + "_trackPositions.xml");
 	if(trackPositions.loadFile(positionFileName)){
 		
-		//cout << "loading element position " << name << "_trackPositions.xml" << endl;
+		cout << "loading element position " << name << "_trackPositions.xml" << endl;
 		
 		trackPositions.pushTag("positions");
 		int numtracks = trackPositions.getNumTags("element");

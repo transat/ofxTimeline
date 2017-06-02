@@ -2309,7 +2309,7 @@ ofVec2f ofxTimeline::getNudgePercent(){
 }
 
 ofVec2f ofxTimeline::getBigNudgePercent(){
-	return ofVec2f(zoomer->getViewRange().span()*.02, 0.02);
+	return ofVec2f(zoomer->getViewRange().span()*.05, 0.05);//was .02
 }
 
 long ofxTimeline::screenXToMillis(float x){
