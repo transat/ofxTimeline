@@ -169,6 +169,7 @@ class ofxTimeline : ofThread {
     //really useful for setting up 'project' directories
     void loadTracksFromFolder(string folderPath);
     void saveTracksToFolder(string folderPath);
+    void savePageToFolder(string folderPath, int page);
 
     void setDefaultFontPath(string fontPath);
     

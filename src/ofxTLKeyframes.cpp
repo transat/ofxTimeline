@@ -145,6 +145,7 @@ void ofxTLKeyframes::draw(){
 		if(isKeyframeIsInBounds(selectedKeyframes[i])){
 			ofVec2f screenpoint = screenPositionForKeyframe(selectedKeyframes[i]);
 			float keysValue = ofMap(selectedKeyframes[i]->value, 0, 1.0, valueRange.min, valueRange.max, true);
+            //cout << "key: " << ofToString(selectedKeyframes[i]->value) << endl;
 			if(keysAreDraggable){
 				string frameString = timeline->formatTime(selectedKeyframes[i]->time);
 				timeline->getFont().drawString(ofToString(keysValue, 4), screenpoint.x+5, screenpoint.y-5);
@@ -484,6 +485,7 @@ void ofxTLKeyframes::mouseDragged(ofMouseEventArgs& args, long millis){
             ofVec2f newScreenPosition;
             setKeyframeTime(selectedKeyframes[k], ofClamp(millis - selectedKeyframes[k]->grabTimeOffset,
 														  screenXToMillis(bounds.getMinX()), screenXToMillis(bounds.getMaxX())));
+            cout << "new value: " << ofToString(screenYToValue(args.y - selectedKeyframes[k]->grabValueOffset)) << endl;
             selectedKeyframes[k]->value = screenYToValue(args.y - selectedKeyframes[k]->grabValueOffset);
             selectedKeyframes[k]->screenPosition = screenPositionForKeyframe(selectedKeyframes[k]);
         }
@@ -542,6 +544,7 @@ void ofxTLKeyframes::mouseReleased(ofMouseEventArgs& args, long millis){
 		//add a new one
 		selectedKeyframe = newKeyframe();
 		setKeyframeTime(selectedKeyframe,millis);
+        cout << "new key: " << ofToString(screenYToValue(args.y)) << endl;
 		selectedKeyframe->value = screenYToValue(args.y);
 		keyframes.push_back(selectedKeyframe);
 		selectedKeyframes.push_back(selectedKeyframe);

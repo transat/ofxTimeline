@@ -339,6 +339,18 @@ void ofxTimeline::saveTracksToFolder(string folderPath){
 	setWorkingFolder(folderPath);
 }
 
+void ofxTimeline::savePageToFolder(string folderPath, int page){
+    
+    ofDirectory targetDirectory = ofDirectory(folderPath);
+    if(!targetDirectory.exists()){
+        targetDirectory.create(true);
+    }
+    folderPath = ofFilePath::addTrailingSlash(folderPath);
+    
+    pages[page]->saveTracksToFolder(folderPath);
+    
+    setWorkingFolder(folderPath);
+}
 
 #pragma mark CONFIGURATION
 void ofxTimeline::setDefaultFontPath(string newFontPath){
@@ -2305,11 +2317,11 @@ long ofxTimeline::getDragTimeOffset(){
 }
 
 ofVec2f ofxTimeline::getNudgePercent(){
-	return ofVec2f(zoomer->getViewRange().span()*.001, .001);
+	return ofVec2f(zoomer->getViewRange().span()*.01, .01);//1% of view
 }
 
 ofVec2f ofxTimeline::getBigNudgePercent(){
-	return ofVec2f(zoomer->getViewRange().span()*.05, 0.05);//was .02
+	return ofVec2f(zoomer->getViewRange().span()*.1, 0.1);//was .02, now %10 of view
 }
 
 long ofxTimeline::screenXToMillis(float x){
