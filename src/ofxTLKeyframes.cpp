@@ -144,7 +144,8 @@ void ofxTLKeyframes::draw(){
 	for(int i = 0; i < selectedKeyframes.size(); i++){
 		if(isKeyframeIsInBounds(selectedKeyframes[i])){
 			ofVec2f screenpoint = screenPositionForKeyframe(selectedKeyframes[i]);
-			float keysValue = ofMap(selectedKeyframes[i]->value, 0, 1.0, valueRange.min, valueRange.max, true);
+			float keysValue = round(ofMap(selectedKeyframes[i]->value, 0, 1.0, valueRange.min, valueRange.max, true));
+            
             //cout << "key: " << ofToString(selectedKeyframes[i]->value) << endl;
 			if(keysAreDraggable){
 				string frameString = timeline->formatTime(selectedKeyframes[i]->time);
