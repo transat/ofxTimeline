@@ -486,7 +486,7 @@ void ofxTLKeyframes::mouseDragged(ofMouseEventArgs& args, long millis){
             ofVec2f newScreenPosition;
             setKeyframeTime(selectedKeyframes[k], ofClamp(millis - selectedKeyframes[k]->grabTimeOffset,
 														  screenXToMillis(bounds.getMinX()), screenXToMillis(bounds.getMaxX())));
-            cout << "new value: " << ofToString(screenYToValue(args.y - selectedKeyframes[k]->grabValueOffset)) << endl;
+            ofLogNotice("KEYS") << "new value: " << screenYToValue(args.y - selectedKeyframes[k]->grabValueOffset);
             selectedKeyframes[k]->value = screenYToValue(args.y - selectedKeyframes[k]->grabValueOffset);
             selectedKeyframes[k]->screenPosition = screenPositionForKeyframe(selectedKeyframes[k]);
         }
@@ -545,7 +545,7 @@ void ofxTLKeyframes::mouseReleased(ofMouseEventArgs& args, long millis){
 		//add a new one
 		selectedKeyframe = newKeyframe();
 		setKeyframeTime(selectedKeyframe,millis);
-        cout << "new key: " << ofToString(screenYToValue(args.y)) << endl;
+        ofLogNotice("KEYS") << "new key: " << screenYToValue(args.y);
 		selectedKeyframe->value = screenYToValue(args.y);
 		keyframes.push_back(selectedKeyframe);
 		selectedKeyframes.push_back(selectedKeyframe);

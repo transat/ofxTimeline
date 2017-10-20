@@ -6,7 +6,12 @@
     </key>
     <key>
         <flag>skip</flag>
-        <time>00:00:03:133</time>
-        <value>0.085106373</value>
+        <time>00:00:02:043</time>
+        <value>0.000000000</value>
+    </key>
+    <key>
+        <flag />
+        <time>00:00:03:317</time>
+        <value>0.531914890</value>
     </key>
 </keyframes>

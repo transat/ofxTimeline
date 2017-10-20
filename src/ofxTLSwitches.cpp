@@ -530,6 +530,8 @@ void ofxTLSwitches::keyPressed(ofKeyEventArgs& args){
             timeline->dismissedModalContent();
             timeline->flagTrackModified(this);
         }
+        //github.com/YCAMInterlab/ofxTimeline/issues/135#issuecomment-247581860
+        clickedTextField->textField.keyPressed(args); // <-- Line I added to pass the key args to the TextInputField
     } else {
         ofxTLKeyframes::keyPressed(args);
     }

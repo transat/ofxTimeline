@@ -58,7 +58,7 @@ void ofxTLFlags::draw(){
 			int screenX = millisToScreenX(key->time);
 			
 			ofSetColor(timeline->getColors().backgroundColor);		
-			int textHeight = bounds.y + 10 + ( (20*i) % int(MAX(bounds.height-15, 15)));
+            int textHeight = bounds.y + 10 + ( (20*i) % int(MAX(bounds.height-15, 15)));
 			key->display = ofRectangle(MIN(screenX+3, bounds.getMaxX() - key->textField.bounds.width),
 									   textHeight-10, 100, 15);
 			ofDrawRectangle(key->display);
@@ -91,7 +91,7 @@ bool ofxTLFlags::mousePressed(ofMouseEventArgs& args, long millis){
         }
     }
 
-//	cout << "text field? " << (clickedTextField == NULL ? "NULL" : clickedTextField->textField.text) << endl;
+//    cout << "text field? " << (clickedTextField == NULL ? "NULL" : clickedTextField->textField.text) << endl;
     //if so, select that text field and key and present modally
     //so that keyboard input all goes to the text field.
     //selection model is designed so that you can type into
@@ -175,6 +175,8 @@ void ofxTLFlags::keyPressed(ofKeyEventArgs& args){
             timeline->dismissedModalContent();
             timeline->flagTrackModified(this);
         }
+        //github.com/YCAMInterlab/ofxTimeline/issues/135#issuecomment-247581860
+        clickedTextField->textField.keyPressed(args); // <-- Line I added to pass the key args to the TextInputField
     }
     //normal behavior for nudging and deleting and stuff
 	else{
@@ -185,6 +187,11 @@ void ofxTLFlags::keyPressed(ofKeyEventArgs& args){
 ofxTLKeyframe* ofxTLFlags::newKeyframe(){
 	ofxTLFlag* key = new ofxTLFlag();
 	key->textField.setFont(timeline->getFont());
+    
+    //github.com/YCAMInterlab/ofxTimeline/issues/135#issuecomment-247581860
+    //not optimal. pass args to clickedTextField in ofxTLFlags::keyPressed
+    //key->textField.setup();
+    //key->textField.setUseListeners(true);
 	return key;
 }
 

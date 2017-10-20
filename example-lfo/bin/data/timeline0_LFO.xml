@@ -2,49 +2,25 @@
     <key>
         <type>0</type>
         <phaseShift>0.000000000</phaseShift>
-        <amplitude>0.111999929</amplitude>
-        <frequency>1.000000000</frequency>
+        <amplitude>1.000000000</amplitude>
+        <frequency>100.000000000</frequency>
         <seed>0.000000000</seed>
         <center>0.000000000</center>
         <interpolate>1</interpolate>
         <expInterpolate>0</expInterpolate>
-        <time>00:00:01:000</time>
-        <value>0.496424496</value>
-    </key>
-    <key>
-        <type>0</type>
-        <phaseShift>0.000000000</phaseShift>
-        <amplitude>0.243999988</amplitude>
-        <frequency>163.699996948</frequency>
-        <seed>0.000000000</seed>
-        <center>0.000000000</center>
-        <interpolate>1</interpolate>
-        <expInterpolate>0</expInterpolate>
-        <time>00:00:07:822</time>
-        <value>0.552457571</value>
-    </key>
-    <key>
-        <type>1</type>
-        <phaseShift>0.000000000</phaseShift>
-        <amplitude>0.842000008</amplitude>
-        <frequency>39.600002289</frequency>
-        <seed>0.000000000</seed>
-        <center>0.058000002</center>
-        <interpolate>1</interpolate>
-        <expInterpolate>0</expInterpolate>
-        <time>00:00:16:087</time>
-        <value>0.740566015</value>
+        <time>00:00:01:146</time>
+        <value>0.601052642</value>
     </key>
     <key>
         <type>0</type>
         <phaseShift>0.000000000</phaseShift>
         <amplitude>1.000000000</amplitude>
-        <frequency>9.999995232</frequency>
+        <frequency>100.000000000</frequency>
         <seed>0.000000000</seed>
         <center>0.000000000</center>
         <interpolate>1</interpolate>
         <expInterpolate>0</expInterpolate>
-        <time>00:00:18:808</time>
-        <value>0.540925264</value>
+        <time>00:00:15:644</time>
+        <value>0.652631581</value>
     </key>
 </keyframes>

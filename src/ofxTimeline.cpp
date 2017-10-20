@@ -1154,6 +1154,7 @@ void ofxTimeline::updatePagePositions(){
 			pages[i]->setContainer(pageOffset, width);
 		}
 		if(currentPage != NULL){
+            //ofLogError("ofxTimeline::updatePagePositions") << "saveTrackPositions()";
 			currentPage->recalculateHeight();
 		}
 	}
@@ -1503,7 +1504,7 @@ void ofxTimeline::exit(ofEventArgs& args){
 //    timeControl = NULL;
 //
 	if(isOnThread){
-		ofLogNotice("ofxTimeline::exit") << "waiting for thread" << endl;
+		ofLogError("ofxTimeline.cpp") << "waiting for thread" << endl;
 		waitForThread(true);
 	}
 
@@ -1551,7 +1552,7 @@ void ofxTimeline::pageChanged(ofxTLPageEventArgs& args){
 		}
 	}
 
-	ofLogError("ofxTimeline -- Tabbed to nonexistence page " + args.currentPageName);
+	ofLogError("ofxTimeline.cpp" + args.currentPageName);
 }
 
 void ofxTimeline::setLoopType(ofLoopType newType){
