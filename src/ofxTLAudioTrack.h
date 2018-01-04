@@ -140,7 +140,7 @@ class ofxTLAudioTrack : public ofxTLTrack
 	float lastPercent;
     
 //	virtual void update(ofEventArgs& args);
-	ofOpenALSoundPlayer_TimelineAdditions player;
+//    ofOpenALSoundPlayer_TimelineAdditions player;
 	ofRange computedZoomBounds;
 	float maxBinReceived;
     float dampening;
