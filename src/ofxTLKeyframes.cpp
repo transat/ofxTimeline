@@ -917,21 +917,21 @@ void ofxTLKeyframes::simplifySelectedKeyframes( float tolerance ){
 
     if ( selectedKeyframes.size() > 2 )
     {
-         vector<ofPoint> pts;
+        std::vector<glm::vec2> pts;
         float startTime = (float)selectedKeyframes[0]->time;
         float timeNormalizationFactor = 1.0 / (float)selectedKeyframes.size();
         for(int k = 0; k < selectedKeyframes.size(); k++){
-            pts.push_back(ofPoint(((float)selectedKeyframes[k]->time - startTime)*timeNormalizationFactor,selectedKeyframes[k]->value));
+            pts.push_back(glm::vec2(((float)selectedKeyframes[k]->time - startTime)*timeNormalizationFactor,selectedKeyframes[k]->value));
         }
         deleteSelectedKeyframes();
 
-        ofPolyline line(pts);
-        line.simplify(tolerance);
-        int i = 0;
-        while ( i < line.size())
-        {
-           addKeyframeAtMillis(ofMap(line[i].y, 0.0, 1.0, valueRange.min, valueRange.max, false),(unsigned long long)(line[i].x / timeNormalizationFactor+startTime));
-           i++;
-        }
+//        ofPolyline line(pts);
+//        line.simplify(tolerance);
+//        int i = 0;
+//        while ( i < line.size())
+//        {
+//           addKeyframeAtMillis(ofMap(line[i].y, 0.0, 1.0, valueRange.min, valueRange.max, false),(unsigned long long)(line[i].x / timeNormalizationFactor+startTime));
+//           i++;
+//        }
     }
 }
