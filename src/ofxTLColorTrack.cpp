@@ -84,9 +84,9 @@ void ofxTLColorTrack::draw(){
 
 		float screenX = millisToScreenX(keyframes[i]->time);
 
-		ofPoint a = ofPoint(screenX-10,bounds.y);
-		ofPoint b = ofPoint(screenX+10,bounds.y);
-		ofPoint c = ofPoint(screenX,bounds.y+10);
+        glm::vec2 a = glm::vec2(screenX-10,bounds.y);
+        glm::vec2 b = glm::vec2(screenX+10,bounds.y);
+        glm::vec2 c = glm::vec2(screenX,bounds.y+10);
 
 		ofPushStyle();
 		ofFill();
@@ -109,7 +109,7 @@ void ofxTLColorTrack::draw(){
 		else{
 			ofSetColor(s->color.getInverted());
 		}
-		ofDrawLine(c, ofVec2f(screenX, bounds.getMaxY()));
+        ofDrawLine(c, glm::vec2(screenX, bounds.getMaxY()));
 		ofPopStyle();
 	}
 }
@@ -152,7 +152,7 @@ void ofxTLColorTrack::drawModalContent(){
 		}
 		colorPallete.draw(colorWindow);
 
-		ofVec2f selectionPoint = colorWindow.getMin() + selectedSample->samplePoint * ofVec2f(colorWindow.width,colorWindow.height);
+        ofVec2f selectionPoint = ofVec2f(colorWindow.getMin()) + selectedSample->samplePoint * ofVec2f(colorWindow.width,colorWindow.height);
 		ofSetColor(selectedSample->color.getInverted());
 		ofDrawLine(selectionPoint - ofVec2f(8,0), selectionPoint + ofVec2f(8,0));
 		ofDrawLine(selectionPoint - ofVec2f(0,8), selectionPoint + ofVec2f(0,8));
@@ -160,13 +160,13 @@ void ofxTLColorTrack::drawModalContent(){
 		ofPushStyle();
 		ofNoFill();
 		if(previousSample != NULL){
-			ofVec2f previousSamplePoint = colorWindow.getMin() + previousSample->samplePoint * ofVec2f(colorWindow.width,colorWindow.height);
+            ofVec2f previousSamplePoint = ofVec2f(colorWindow.getMin()) + previousSample->samplePoint * ofVec2f(colorWindow.width,colorWindow.height);
 			ofSetColor(previousSample->color.getInverted(), 150);
 			ofDrawCircle(previousSamplePoint, 3);
 			ofDrawLine(previousSamplePoint,selectionPoint);
 		}
 		if(nextSample != NULL){
-			ofVec2f nextSamplePoint = colorWindow.getMin() + nextSample->samplePoint * ofVec2f(colorWindow.width,colorWindow.height);
+            ofVec2f nextSamplePoint = ofVec2f(colorWindow.getMin()) + nextSample->samplePoint * ofVec2f(colorWindow.width,colorWindow.height);
 			ofSetColor(nextSample->color.getInverted(), 150);
 
 			//draw a little triangle pointer
