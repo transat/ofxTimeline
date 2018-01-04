@@ -1039,18 +1039,18 @@ vector<float>& ofOpenALSoundPlayer_TimelineAdditions::getCurrentBufferForChannel
 //-----------------------------------------------------------
 ofSoundBuffer& ofOpenALSoundPlayer_TimelineAdditions::getCurrentSoundBuffer(int _size){
     
-    if(currentSoundBuffer.getNumChannels()!= channels){
-        ofLogError()<<"Sound Player: currentSoundBuffer incorrect NumChannels";
-        return;
-    }
-    if(currentSoundBuffer.getSampleRate()!= samplerate){
-        ofLogError()<<"Sound Player: currentSoundBuffer incorrect Sample Rate";
-        return;
-    }
-    if(channelSoundBuffer.getSampleRate()!= samplerate){
-        ofLogError()<<"Sound Player: channelSoundBuffer incorrect Sample Rate";
-        return;
-    }
+//    if(currentSoundBuffer.getNumChannels()!= channels){
+//        ofLogError()<<"Sound Player: currentSoundBuffer incorrect NumChannels";
+//        return;
+//    }
+//    if(currentSoundBuffer.getSampleRate()!= samplerate){
+//        ofLogError()<<"Sound Player: currentSoundBuffer incorrect Sample Rate";
+//        return;
+//    }
+//    if(channelSoundBuffer.getSampleRate()!= samplerate){
+//        ofLogError()<<"Sound Player: channelSoundBuffer incorrect Sample Rate";
+//        return;
+//    }
     
     
     for (int i=0; i<channels; i++){
@@ -1065,10 +1065,10 @@ ofSoundBuffer& ofOpenALSoundPlayer_TimelineAdditions::getCurrentSoundBuffer(int 
 ofSoundBuffer& ofOpenALSoundPlayer_TimelineAdditions::getCurrentSoundBufferMono(int _size){
     
     
-    if(channelSoundBuffer.getSampleRate()!= samplerate){
-        ofLogError()<<"Sound Player: channelSoundBuffer incorrect Sample Rate";
-        return;
-    }
+//    if(channelSoundBuffer.getSampleRate()!= samplerate){
+//        ofLogError()<<"Sound Player: channelSoundBuffer incorrect Sample Rate";
+//        return;
+//    }
     
     channelSoundBuffer.copyFrom( getCurrentBuffer(_size), 1, samplerate);
     
@@ -1078,18 +1078,18 @@ ofSoundBuffer& ofOpenALSoundPlayer_TimelineAdditions::getCurrentSoundBufferMono(
 //-----------------------------------------------------------
 ofSoundBuffer& ofOpenALSoundPlayer_TimelineAdditions::getSoundBufferForFrame(int _frame, float _fps, int _size){
     
-    if(currentSoundBuffer.getNumChannels()!= channels){
-        ofLogError()<<"Sound Player: currentSoundBuffer incorrect NumChannels";
-        return;
-    }
-    if(currentSoundBuffer.getSampleRate()!= samplerate){
-        ofLogError()<<"Sound Player: currentSoundBuffer incorrect Sample Rate";
-        return;
-    }
-    if(channelSoundBuffer.getSampleRate()!= samplerate){
-        ofLogError()<<"Sound Player: channelSoundBuffer incorrect Sample Rate";
-        return;
-    }
+//    if(currentSoundBuffer.getNumChannels()!= channels){
+//        ofLogError()<<"Sound Player: currentSoundBuffer incorrect NumChannels";
+//        return;
+//    }
+//    if(currentSoundBuffer.getSampleRate()!= samplerate){
+//        ofLogError()<<"Sound Player: currentSoundBuffer incorrect Sample Rate";
+//        return;
+//    }
+//    if(channelSoundBuffer.getSampleRate()!= samplerate){
+//        ofLogError()<<"Sound Player: channelSoundBuffer incorrect Sample Rate";
+//        return;
+//    }
     
     //---------------------------------------------
     
@@ -1105,10 +1105,10 @@ ofSoundBuffer& ofOpenALSoundPlayer_TimelineAdditions::getSoundBufferForFrame(int
 //-----------------------------------------------------------
 ofSoundBuffer& ofOpenALSoundPlayer_TimelineAdditions::getSoundBufferMonoForFrame(int _frame, float _fps, int _size){
     
-    if(channelSoundBuffer.getSampleRate()!= samplerate){
-        ofLogError()<<"Sound Player: channelSoundBuffer incorrect Sample Rate";
-        return;
-    }
+//    if(channelSoundBuffer.getSampleRate()!= samplerate){
+//        ofLogError()<<"Sound Player: channelSoundBuffer incorrect Sample Rate";
+//        return;
+//    }
     
     channelSoundBuffer.copyFrom( getBufferForFrame(_frame, _fps, _size), 1, samplerate);
     
