@@ -7,7 +7,7 @@
 #include "ofEvents.h"
 #include "ofThread.h"
 
-#if defined (TARGET_OF_IPHONE) || defined (TARGET_OSX)
+#if defined (TARGET_OF_IOS) || defined (TARGET_OSX)
 #include <OpenAL/al.h>
 #include <OpenAL/alc.h>
 #else
@@ -73,7 +73,7 @@ class ofOpenALSoundPlayer_TimelineAdditions : public ofBaseSoundPlayer, public o
 		ofOpenALSoundPlayer_TimelineAdditions();
 		virtual ~ofOpenALSoundPlayer_TimelineAdditions();
 
-		bool load(string fileName, bool stream = false) override;
+		bool load(string fileName, bool stream = false);
 		void unload() override;
 		void play() override;
 		void stop() override;
